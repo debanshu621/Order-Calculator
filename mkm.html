@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MKM Cloth Collections</title> 
+ <style>
+ input[type="text"], input[type="date"], select {
+ width:98%;
+ }
+ body{
+        background-color: #ffccff;
+  font-weight: bold; 
+ }
+ div{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 20px; 
+ }
+
+   h3{
+    color:#FFFFFF;
+    background-color:#6666FF;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    width:50%;
+    font-family:Verdana;
+    padding:5px;
+    border-radius:6px;
+   }
+ 
+ table, td, tr{
+  border: solid 2px black;
+  width:50%;
+  margin-left:auto;
+  margin-right:auto;
+  border-spacing: 1px;
+  border-radius: 6px;
+  color:#000000;
+  background-color:transparent;
+  padding:1px;
+ }
+
+ ::-webkit-input-placeholder { 
+  color: #696969;
+  font-weight: bold;
+ }
+ 
+ #submit{
+  color:#FFFFFF;
+  background-color: #6666FF;
+  margin-left:auto;
+  margin-right:auto;
+  padding:5px;
+  width:50%;
+  font-family: Verdana;
+  font-weight:bold;
+  border-radius:6px;
+ }
+ #result{
+  color:#000000;
+  font-size:20px;
+ }
+
+ </style>
+</head>
+ 
+<body>
+<div>
+<h3><!-- Fill the heading text -->MKM Cloth Collections</h3>
+<form onsubmit="return display()" >
+<table>
+ <tr>
+        <td>Customer Name</td>
+        <td><input id="cname" type="text" placeholder="Enter the customer name" required></td>
+    </tr>
+ <tr>
+       <td>Phone Number</td>
+    <td><input id="phno" type="text" placeholder="Enter the phone number" required></td>
+    </tr>
+ <tr>
+        <td>Product Name</td>
+        <td><input id="pname" type="text" placeholder="Enter the product name" required></td>
+    </tr>
+ <tr>
+        <td>Date of Order</td>
+        <td><input id="orderdate" type="date" mandatory></td>
+    </tr>
+ <tr>
+  <td>Price</td>
+  <td><input id="price" placeholder="Enter the price" type="text" required min="1000"></td>
+ </tr>
+ <tr>
+        <td>Quantity</td>
+        <td><input id="quantity" placeholder="Enter the quantity" type="text" required></td>
+    </tr>
+ <tr>
+  <td>Coupon Code</td>
+  <td><select id="couponCode">
+      <option value="Select Coupon Code..">Select Coupon Code..</option>
+      <option value="MKM0707">MKM0707</option>
+      <option value="MKM553P">MKM553P</option>
+      <option value="MKM859L">MKM859L</option>
+      
+  </select> </td>
+ </tr>
+</table>
+
+<!-- Fill the submit component value attribute  -->
+<p><input type="submit" id="submit" name="submit" value="CONFIRM ORDER" /></p>
+
+<!-- Fill the div id  -->
+<div id="result"> </div>
+
+
+</form>
+</div>
+<!--Write necessary code wherever needed to complete this code challenge  -->
+<script>
+    function display(){
+       var price=document.getElementById("price").value;
+  var quantity=document.getElementById("quantity").value;
+  var code=document.getElementById("couponCode").value;
+        var total;
+        var dis;
+        if(code=="MKM0707")
+        {
+         dis=25;
+
+        }
+        else if(code=="MKM553P")
+        {
+         dis=20;
+        }
+        else if(code=="MKM859L")
+        {
+         dis=10;
+        }
+        var dressCost=price*quantity;
+        var discountPrice=dressCost*(dis/100);
+        var totalDressCost=Math.round(dressCost-discountPrice);
+  document.getElementById("result").innerHTML="Your order has been successfully placed and you need to pay Rs. "+totalDressCost.toString();
+  return false;
+        
+     
+    }
+</script>
+</body>
+</html>
